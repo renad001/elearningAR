@@ -202,7 +202,6 @@ public class CloudReco extends AppCompatActivity implements SampleApplicationCon
 
         mAuth = FirebaseAuth.getInstance();
         UserID = Objects.requireNonNull(mAuth.getCurrentUser().getUid());
-);
         Log.e(LOGTAG, "user Id " +  UserID);
 
 
