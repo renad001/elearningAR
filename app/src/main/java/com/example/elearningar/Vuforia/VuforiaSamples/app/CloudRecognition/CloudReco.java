@@ -172,6 +172,7 @@ public class CloudReco extends AppCompatActivity implements SampleApplicationCon
         Log.d(LOGTAG, "onCreate");
         super.onCreate(savedInstanceState);
 
+        setupFirebaseAuth();
 
         // Inflates the Overlay Layout to be displayed above the Camera View
         LayoutInflater inflater = LayoutInflater.from(this);
@@ -199,13 +200,6 @@ public class CloudReco extends AppCompatActivity implements SampleApplicationCon
         Toolbar toolbar = mUILayout.findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-        mAuth = FirebaseAuth.getInstance();
-        UserID = Objects.requireNonNull(mAuth.getCurrentUser().getUid());
-        Log.e(LOGTAG, "user Id " +  UserID);
-
-
-        setupFirebaseAuth();
 
         DrawerLayout drawer = mUILayout.findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -242,7 +236,7 @@ public class CloudReco extends AppCompatActivity implements SampleApplicationCon
         userName = headerView.findViewById(R.id.usernameNavheader);
         email = headerView.findViewById(R.id.emailNavheader);
 
-        DatabaseReference user = FirebaseDatabase.getInstance().getReference().child("users").child(mAuth.getUid());
+        DatabaseReference user = FirebaseDatabase.getInstance().getReference().child("users").child(Objects.requireNonNull(mAuth.getUid()));
 
         user.addValueEventListener(new ValueEventListener() {
             @Override
