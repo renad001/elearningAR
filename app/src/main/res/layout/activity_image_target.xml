@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Target.ImageTargetActivity">
+
+
+    <RelativeLayout
+        android:id="@+id/player"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        >
+
+
+        <VideoView
+            android:id="@+id/videoPlay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            />
+
+        <com.google.android.youtube.player.YouTubePlayerView
+            android:id="@+id/player_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+        </com.google.android.youtube.player.YouTubePlayerView>
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/player"
+        >
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/like"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/ic_like"
+        android:layout_toLeftOf="@+id/favorate"
+        android:layout_marginEnd="7dp"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/likenum"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_toLeftOf="@+id/like"
+        android:layout_alignBottom="@id/like"
+        />
+
+    <ImageView
+        android:id="@+id/favorate"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/ic_bookmark"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        />
+
+    <RelativeLayout
+        android:id="@+id/rl1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/favorate"
+        android:layout_margin="10dp"
+        >
+
+        <ImageView
+            android:id="@+id/profilephoto"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            />
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/profilephoto"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="5dp"
+            />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_below="@id/rl1">
+
+        <TextView
+            android:id="@+id/bookName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/bookName"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Title"
+            />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl2">
+
+        <ListView
+            android:id="@+id/comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </ListView>
+
+        <TextView
+            android:id="@+id/loadAll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/comment"
+            android:text="Load all comment And attachments"
+            android:gravity="center"
+            android:padding="10dp"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

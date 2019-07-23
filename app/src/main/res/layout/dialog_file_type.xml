@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+>
+
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="choose File Type"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_marginBottom="5dp"/>
+
+    <TextView
+        android:id="@+id/imageIV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="  Image"
+        android:layout_below="@+id/text"
+        android:textSize="17dp"
+        android:padding="7dp"
+        />
+
+    <TextView
+        android:id="@+id/video"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="  video"
+        android:layout_below="@+id/imageIV"
+        android:textSize="17dp"
+        android:padding="7dp"
+        />
+
+    <TextView
+        android:id="@+id/YTvideo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="  Youtube video"
+        android:layout_below="@+id/video"
+        android:textSize="17dp"
+        android:padding="7dp"
+        />
+
+    <TextView
+        android:id="@+id/pdf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="  PDF"
+        android:layout_below="@+id/YTvideo"
+        android:textSize="17dp"
+        android:padding="7dp"
+        />
+
+</RelativeLayout>

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Target.CommentActivity">
+
+
+    <RelativeLayout
+        android:id="@+id/rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimaryT" />
+
+        <ImageView
+            android:id="@+id/backArraow"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_margin="10dp"
+            android:src="@drawable/ic_back_arraw" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:textSize="18dp"
+            android:textColor="#000"/>
+
+        <ImageView
+            android:id="@+id/sortt"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_sort"
+            android:layout_marginEnd="5dp"
+            />
+
+        <ImageView
+            android:id="@+id/sortType"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/sortt"
+            />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rl1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl"
+        android:layout_marginBottom="60dp"
+        >
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/CommentRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+        </android.support.v7.widget.RecyclerView>
+
+    </RelativeLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="3dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimaryT"
+        >
+
+        <RelativeLayout
+            android:id="@+id/attachRL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/attachCancel"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_cancel"
+                android:layout_marginEnd="20dp"/>
+
+            <ImageView
+                android:id="@+id/attachpreview"
+                android:layout_width="80dp"
+                android:layout_height="80dp" android:layout_toRightOf="@id/attachCancel" />
+
+            <TextView
+                android:id="@+id/attachName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/attachpreview"
+                android:layout_marginTop="5dp"
+                />
+
+            <TextView
+                android:id="@+id/attachType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/attachpreview"
+                android:layout_below="@id/attachName"
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"
+                />
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="3dp">
+
+            <ImageView
+                android:id="@+id/showPopup"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="3dp"
+                android:src="@drawable/ic_add"
+                android:onClick="showPopup" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="2dp"
+            android:layout_margin="3dp"
+            android:background="@drawable/white_grey_rounded_border"
+            >
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingStart="5dp">
+
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:hint="Comment..."
+                    android:textSize="20sp"
+                    android:padding="2dp"
+                    android:textColor="#000"
+                    android:layout_marginStart="5dp"
+                    android:id="@+id/messageEditText"
+                    android:layout_marginBottom="7dp"
+                    android:background="@null"/>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="42dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom"
+                >
+
+                <ImageView
+                    android:id="@+id/send"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginEnd="10dp"
+                    android:gravity="center_horizontal"
+                    android:layout_centerVertical="true"
+                    />
+
+
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/pdfRL"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="55dp">
+
+
+        <com.github.barteksc.pdfviewer.PDFView
+            android:id="@+id/pdfView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:id="@+id/close"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_cancel"
+            />
+    </RelativeLayout>
+
+</RelativeLayout>

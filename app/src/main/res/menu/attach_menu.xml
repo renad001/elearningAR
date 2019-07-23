@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/image"
+        android:icon="@drawable/ic_menu_gallery"
+        android:title="Add Image"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/video"
+        android:icon="@drawable/ic_video"
+        android:title="Add video"
+        android:orderInCategory="100"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/YTvideo"
+        android:icon="@drawable/ic_menu_slideshow"
+        android:title="Add YouTube video"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/pdf"
+        android:icon="@drawable/ic_file"
+        android:title="Add PDF File"
+        android:orderInCategory="100"
+        app:showAsAction="never"/>
+</menu>
