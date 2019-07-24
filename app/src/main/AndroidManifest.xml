@@ -20,17 +20,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".Navigate.FavoriteActivity"></activity>
-        <activity android:name=".Target.CommentActivity" />
-        <activity android:name=".Target.ImageTargetActivity" />
 
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
 
+        <activity android:name=".Navigate.FavoriteActivity"/>
+        <activity android:name=".Target.CommentActivity" />
+        <activity android:name=".Target.ImageTargetActivity" />
         <activity android:name=".YouTube.YoutubeSearchActivity" />
         <activity android:name=".Target.AddWordTarget" />
-        <activity android:name=".Target.AddImageTarget" />
+        <activity android:name=".Target.AddImageTarget"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".Navigate.Profile" />
         <activity android:name=".Authentication.ResetPassword" />
         <activity android:name=".Authentication.SignIn" />

@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         };
 
         startActivity(new Intent(MainActivity.this, CloudReco.class));
-
+        finish();
     }
 
     @Override
