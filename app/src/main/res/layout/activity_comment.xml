@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Target.CommentActivity">
+    tools:context=".Target.CommentActivity"
+    android:background="@color/transparent">
 
 
     <RelativeLayout
@@ -69,6 +70,7 @@
             android:id="@+id/CommentRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/transparent"
             >
 
         </android.support.v7.widget.RecyclerView>

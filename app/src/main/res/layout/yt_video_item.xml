@@ -27,13 +27,15 @@
             android:layout_height="100dp"
             android:src="@mipmap/ic_launcher"
             android:layout_alignParentTop="true"
-            card_view:srcCompat="@color/colorPrimary" />
+            card_view:srcCompat="@color/colorPrimary"
+            android:layout_alignParentLeft="true"/>
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/video_thumbnail"
-            android:layout_marginStart="10dp">
+            android:layout_marginStart="10dp"
+            android:layout_alignParentRight="true">
 
         <TextView
             android:id="@+id/video_title"

@@ -35,7 +35,9 @@
                         android:layout_height="40dp"
                         android:layout_centerVertical="true"
                         android:layout_margin="10dp"
-                        android:src="@drawable/ic_back_arraw" />
+                        android:src="@drawable/ic_back_arraw"
+                        android:layout_alignParentLeft="true"/>
+
 
                     <TextView
                         android:layout_width="match_parent"
@@ -65,8 +67,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
-                        android:text="Please upluad photo you want to recognize"
-                        android:layout_toRightOf="@id/photopicker"
+                        android:text="@string/please_upluad_photo_you_want_to_recognize"
+                        android:layout_toEndOf="@id/photopicker"
                         android:gravity="center"
                         android:paddingStart="5dp"
                         />
@@ -79,7 +81,7 @@
                     android:id="@+id/uploadedImage"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
-                    android:layout_marginTop="90dp"
+                    android:layout_marginTop="100dp"
                     android:src="@drawable/ic_add"
                     />
 
@@ -100,8 +102,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
-                        android:text="Please upload video you want to play"
-                        android:layout_toRightOf="@id/vidiopicker"
+                        android:text="@string/please_upload_video_you_want_to_play"
+                        android:layout_toEndOf="@id/vidiopicker"
                         android:gravity="center"
                         android:paddingStart="5dp"
                         />
@@ -125,8 +127,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
-                        android:text="or choose video  from YouTube"
-                        android:layout_toRightOf="@id/youtubepicker"
+                        android:text="@string/or_choose_video_from_youtube"
+                        android:layout_toEndOf="@id/youtubepicker"
                         android:gravity="center"
                         android:paddingStart="5dp"
                         />

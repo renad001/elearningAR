@@ -145,5 +145,8 @@
     <string name="menu_button_green">Green</string>
 
     <string name="splash_screen_description">Vuforia Splash</string>
+    <string name="please_upluad_photo_you_want_to_recognize">Please upluad photo you want to recognize</string>
+    <string name="please_upload_video_you_want_to_play">Please upload video you want to play</string>
+    <string name="or_choose_video_from_youtube">or choose video from YouTube</string>
 
 </resources>

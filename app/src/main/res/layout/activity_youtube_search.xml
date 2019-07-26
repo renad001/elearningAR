@@ -29,7 +29,9 @@
                 android:layout_height="40dp"
                 android:layout_centerVertical="true"
                 android:layout_margin="10dp"
-                android:src="@drawable/ic_back_arraw" />
+                android:src="@drawable/ic_back_arraw"
+                android:layout_alignParentLeft="true"/>
+
 
             <TextView
                 android:layout_width="match_parent"
@@ -58,7 +60,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="paste youtube video url :"
-                    />
+                    android:layout_alignParentLeft="true" />
 
 
                 <EditText
@@ -70,8 +72,8 @@
                     android:textSize="20sp"
                     android:textColor="#000"
                     android:layout_toLeftOf="@id/searchUrl"
+                    android:layout_alignParentLeft="true"/>
 
-                    />
 
 
                 <ImageView
@@ -80,7 +82,7 @@
                     android:layout_gravity="center"
                     android:paddingRight="5dp"
                     android:src="@drawable/ic_search"
-                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
                     android:layout_below="@id/TV"
                     android:id="@+id/searchUrl"
                     android:layout_marginTop="7dp"/>
@@ -108,7 +110,7 @@
                     android:id="@+id/input"
                     android:layout_toLeftOf="@id/search"
                     android:layout_below="@id/TV1"
-
+                    android:layout_alignParentLeft="true"
                     />
 
 
@@ -118,7 +120,7 @@
                     android:layout_gravity="center"
                     android:paddingRight="5dp"
                     android:src="@drawable/ic_search"
-                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
                     android:layout_below="@id/TV1"
                     android:id="@+id/search"
                     android:layout_marginTop="7dp"/>

@@ -21,11 +21,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -45,12 +48,14 @@ import android.widget.Toast;
 
 import com.example.elearningar.Authentication.SignIn;
 import com.example.elearningar.MainActivity;
+import com.example.elearningar.Module.Comment;
 import com.example.elearningar.Module.User;
 import com.example.elearningar.Navigate.FavoriteActivity;
 import com.example.elearningar.Navigate.Profile;
 import com.example.elearningar.R;
 import com.example.elearningar.Target.AddImageTarget;
 import com.example.elearningar.Target.AddWordTarget;
+import com.example.elearningar.Target.CommentsRecyclerViewAdapter;
 import com.example.elearningar.Target.ImageTargetActivity;
 import com.example.elearningar.Vuforia.VuforiaSamples.app.CloudRecognition.VideoPlay.VideoMetaDataModel;
 import com.example.elearningar.Vuforia.VuforiaSamples.app.CloudRecognition.VideoPlay.VideoPlayerHelper;
@@ -62,6 +67,7 @@ import com.example.elearningar.Vuforia.utils.SampleApplicationGLView;
 import com.example.elearningar.Vuforia.utils.Texture;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -81,6 +87,7 @@ import com.vuforia.Vuforia;
 
 import com.example.elearningar.Vuforia.SampleApplication.*;
 
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Vector;
 
@@ -160,7 +167,9 @@ public class CloudReco extends AppCompatActivity implements SampleApplicationCon
 
     private NavigationView navigationView;
 
-    private String UserID;
+    private RecyclerView recyclerView;
+    private SimpleCommentsRecyclerViewAdapter adapter;
+    private ArrayList<Comment> Clist = new ArrayList<>() ;
 /*
     boolean mIsStereo = false;
     boolean mIsVR = false;*/
@@ -173,6 +182,9 @@ public class CloudReco extends AppCompatActivity implements SampleApplicationCon
         super.onCreate(savedInstanceState);
 
         setupFirebaseAuth();
+
+
+
 
         // Inflates the Overlay Layout to be displayed above the Camera View
         LayoutInflater inflater = LayoutInflater.from(this);
@@ -213,6 +225,8 @@ public class CloudReco extends AppCompatActivity implements SampleApplicationCon
 
         setprofile();
         //*******************
+
+        recyclerView = mUILayout.findViewById(R.id.CommentRecyclerView);
 
 
         mTextures = new Vector<Texture>();
@@ -308,7 +322,7 @@ public class CloudReco extends AppCompatActivity implements SampleApplicationCon
 
 
 
-
+        boolean pressed =false;
     // Process Single Tap event to trigger autofocus
     private class GestureListener extends GestureDetector.SimpleOnGestureListener {
         // Used to set autofocus one second after a manual focus is triggered
@@ -337,13 +351,109 @@ public class CloudReco extends AppCompatActivity implements SampleApplicationCon
             boolean isInsideTarget = mRenderer.isTapOnScreenInsideTarget(e.getX(), e.getY());
             Log.e(LOGTAG, "isInsideTarget " + isInsideTarget);
             if (isInsideTarget){
-                Intent intent = new Intent(CloudReco.this, ImageTargetActivity.class);
-                intent.putExtra("TargetID", TargetID );
-                startActivity(intent);
+
+                Log.e(LOGTAG, "onSingleTapUp "  + pressed);
+
+                if (pressed){
+                    recyclerView.setVisibility(View.GONE);
+                    Clist.clear();
+                    adapter.notifyDataSetChanged();
+                    pressed = !pressed;
+                }else {
+                    recyclerView.setVisibility(View.VISIBLE);
+                    setComment();
+                    pressed = !pressed;
+                }
+
             }
+
             return true;
         }
 
+    }
+
+    public void close(){
+        recyclerView.setVisibility(View.GONE);
+        Clist.clear();
+        adapter.notifyDataSetChanged();
+        pressed = !pressed;
+    }
+    private void setComment(){
+
+        Log.e(LOGTAG, "onSingleTapUp, setComment " );
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        adapter = new SimpleCommentsRecyclerViewAdapter(this, Clist , mAuth.getUid(), TargetID );
+        recyclerView.setAdapter(adapter);
+        layoutManager.setStackFromEnd(true);
+
+        DatabaseReference CommentRef = FirebaseDatabase.getInstance().getReference().child("ImageTarget").child(TargetID).child("comment");
+
+        CommentRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                setComment(dataSnapshot);
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                if (dataSnapshot.exists()){
+                    String CommentID = dataSnapshot.getKey();
+
+                    if (CommentID != null){
+
+                        for (int i =0 ; i < Clist.size() ; i ++){
+                            if ( Clist.get(i).getCommentId().equals(CommentID)){
+                                Clist.set(i , setComment(dataSnapshot));
+                                Clist.remove(Clist.size()-1);
+                                adapter.notifyItemRangeChanged(i,Clist.size()-1);
+
+                            }
+
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private Comment setComment(DataSnapshot dataSnapshot){
+
+        final Comment comment = new Comment();
+
+        comment.setCommentId(dataSnapshot.getKey());
+        comment.setCommentUserId(dataSnapshot.child("commentUserId").getValue(String.class));
+        comment.setCommentText(dataSnapshot.child("commentText").getValue(String.class));
+        comment.setCommentDate(dataSnapshot.child("commentDate").getValue(String.class));
+        comment.setAttachmentType(dataSnapshot.child("attachmentType").getValue(String.class));
+        comment.setAttachmentUrl(dataSnapshot.child("attachmentUrl").getValue(String.class));
+        comment.setLikes(String.valueOf(dataSnapshot.child("likes").getChildrenCount()));
+
+        Log.e(LOGTAG, "comment " + comment.toString());
+        if (comment.getAttachmentType() == null){
+            Clist.add(comment);
+            adapter.notifyItemInserted(Clist.size());
+        }
+        Log.e(LOGTAG, "Clist.size() " + Clist.size());
+
+
+        return comment;
     }
 
 

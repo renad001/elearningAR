@@ -6,6 +6,7 @@
     android:paddingEnd="10dp"
     android:paddingBottom="5dp"
     android:paddingTop="3dp"
+    android:id="@+id/comment"
     >
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -79,74 +80,6 @@
         android:layout_marginTop="3dp"
         android:layout_below="@+id/textView"
        />
-
-    <RelativeLayout
-        android:id="@+id/RLAttachment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textView"
-        android:layout_marginBottom="3dp"
-        android:layout_marginTop="3dp"
-        android:layout_below="@+id/textView1"
-        >
-
-        <ImageView
-            android:id="@+id/imageAttach"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <VideoView
-            android:id="@+id/videoPlay"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_centerHorizontal="true"
-            />
-
-        <com.google.android.youtube.player.YouTubePlayerView
-            android:id="@+id/player_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-
-        </com.google.android.youtube.player.YouTubePlayerView>
-
-        <android.support.v7.widget.CardView
-            android:id="@+id/fileCard"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:id="@+id/fileimg"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/ic_file"
-                android:layout_margin="5dp"
-                />
-
-            <TextView
-                android:id="@+id/filename"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="65dp"/>
-
-        </android.support.v7.widget.CardView>
-        
-        <ProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_centerInParent="true"/>
-
-        <ImageView
-            android:id="@+id/failll"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_centerInParent="true"
-            android:src="@drawable/ic_error"/>
-
-
-    </RelativeLayout>
 
     <View
         android:id="@+id/divider3"

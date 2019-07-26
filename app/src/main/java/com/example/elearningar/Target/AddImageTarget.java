@@ -201,7 +201,7 @@ public class AddImageTarget extends YouTubeBaseActivity {
 
     private void imagePicker(){
         new ImagePicker.Builder(AddImageTarget.this)
-                .mode(ImagePicker.Mode.GALLERY)
+                .mode(ImagePicker.Mode.CAMERA_AND_GALLERY)
                 .directory(ImagePicker.Directory.DEFAULT)
                 .extension(ImagePicker.Extension.PNG)
                 .extension(ImagePicker.Extension.JPG)

@@ -17,7 +17,9 @@
             />
 
 
-    <include layout="@layout/content_main" />
+    <include
+        android:id="@+id/include"
+        layout="@layout/content_main" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -36,5 +38,20 @@
             />
 
     </RelativeLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/CommentRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="60dp"
+        app:layout_anchor="@+id/include"
+        app:layout_anchorGravity="left|bottom">
+
+    </android.support.v7.widget.RecyclerView>
+
 
 </android.support.design.widget.CoordinatorLayout>

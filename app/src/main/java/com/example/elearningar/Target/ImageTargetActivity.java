@@ -285,7 +285,13 @@ public class ImageTargetActivity extends YouTubeBaseActivity {
         }
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        videoView.pause();
+        videoView.setVideoURI(null);
+        finish();
+    }
 
     //firebase
     private FirebaseAuth mAuth;

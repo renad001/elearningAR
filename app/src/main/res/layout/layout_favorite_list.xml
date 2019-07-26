@@ -100,6 +100,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
         <VideoView
             android:id="@+id/videoPlay"
             android:layout_width="match_parent"
@@ -107,6 +110,7 @@
             android:layout_centerHorizontal="true"
             />
 
+        </RelativeLayout>
         <com.google.android.youtube.player.YouTubePlayerView
             android:id="@+id/player_view"
             android:layout_width="match_parent"
